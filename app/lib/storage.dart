@@ -10,12 +10,12 @@ import 'models.dart';
 /// Формат файлов выбран так, чтобы позже его можно было целиком
 /// синхронизировать через Google Drive.
 class Storage {
-  Storage(this.root);
+  Storage([this.root]);
 
-  final Directory root;
+  final Directory? root;
 
-  File get _notesFile => File(p.join(root.path, 'notes.json'));
-  Directory get attachmentsDir => Directory(p.join(root.path, 'attachments'));
+  File get _notesFile => File(p.join(root!.path, 'notes.json'));
+  Directory get attachmentsDir => Directory(p.join(root!.path, 'attachments'));
 
   static Future<Storage> open() async {
     final docs = await getApplicationDocumentsDirectory();
